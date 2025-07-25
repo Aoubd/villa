@@ -3,8 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>موقعي الشخصي</title>
+    <title>أدوار مشروع وهج الجوهرة - للبيع</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --text-primary: #000000;
+            --text-secondary: #666666;
+            --card-bg: #ffffff;
+            --border-color: #e0e0e0;
+            --accent-color: #000000;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #000000;
+            --bg-secondary: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --card-bg: #1a1a1a;
+            --border-color: #333333;
+            --accent-color: #ffffff;
+            --shadow: rgba(255, 255, 255, 0.1);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,156 +35,494 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Cairo', sans-serif;
+            background: var(--bg-primary);
             min-height: 100vh;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 50px;
+            padding: 10px 15px;
+            cursor: pointer;
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: #333;
+            gap: 8px;
+            font-size: 1rem;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px var(--shadow);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.05);
         }
 
         .container {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 50px;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
             text-align: center;
-            max-width: 600px;
-            animation: fadeIn 1s ease-out;
+            margin-bottom: 40px;
+            padding: 60px 0;
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            margin-top: 20px;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-primary);
         }
 
-        h1 {
-            color: #667eea;
-            font-size: 3em;
-            margin-bottom: 20px;
-            animation: pulse 2s infinite;
+        .header p {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
         }
 
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        p {
-            font-size: 1.2em;
-            line-height: 1.8;
-            color: #555;
+        .main-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px var(--shadow);
+            overflow: hidden;
             margin-bottom: 30px;
+            border: 1px solid var(--border-color);
         }
 
-        .buttons {
+        .hero-image {
+            width: 100%;
+            height: 400px;
+            background: var(--bg-secondary);
+            background-image: url('https://raw.githubusercontent.com/Aoubd/villa/main/DJI_20250722184633_0443_D.JPG');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             display: flex;
-            gap: 20px;
+            align-items: center;
             justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1em;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            font-size: 1.5rem;
+            position: relative;
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
         }
 
-        .social-links {
-            margin-top: 40px;
+        .hero-image span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-icons {
+            position: absolute;
+            top: 20px;
+            right: 20px;
             display: flex;
-            gap: 20px;
-            justify-content: center;
+            gap: 15px;
+            z-index: 2;
         }
 
-        .social-link {
-            width: 50px;
-            height: 50px;
-            background: #f0f0f0;
+        .contact-icon {
+            background: var(--accent-color);
+            color: var(--bg-primary);
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px var(--shadow);
             text-decoration: none;
-            color: #667eea;
-            font-size: 1.5em;
+        }
+
+        .contact-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .whatsapp-icon {
+            background: #25D366;
+            color: white;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .description {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: var(--bg-secondary);
+            border-radius: 15px;
+        }
+
+        .description h2 {
+            font-size: 2rem;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+
+        .description p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .floors {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .floor-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
             transition: all 0.3s ease;
         }
 
-        .social-link:hover {
-            background: #667eea;
-            color: white;
+        .floor-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 15px 30px var(--shadow);
         }
 
-        .footer {
-            margin-top: 50px;
-            font-size: 0.9em;
-            color: #888;
+        .floor-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: var(--bg-secondary);
+            border-radius: 50%;
+            transform: translate(50%, -50%);
+        }
+
+        .floor-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            color: var(--text-primary);
+        }
+
+        .floor-card ul {
+            list-style: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .floor-card li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+
+        .floor-card li:last-child {
+            border-bottom: none;
+        }
+
+        .floor-card li::before {
+            content: '✓';
+            margin-left: 10px;
+            color: var(--text-primary);
+            font-weight: bold;
+        }
+
+        .feature-badge {
+            background: var(--accent-color);
+            color: var(--bg-primary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .video-section {
+            background: var(--bg-secondary);
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .video-section h3 {
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            margin-bottom: 30px;
+        }
+
+        .videos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .video-item {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .video-item h4 {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 300px;
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .video-placeholder iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+        }
+
+        .contact {
+            background: var(--accent-color);
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            color: var(--bg-primary);
+        }
+
+        .contact h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .phone {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            direction: ltr;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            background: var(--bg-primary);
+            color: var(--accent-color);
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--bg-primary);
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .floors {
+                grid-template-columns: 1fr;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .phone {
+                font-size: 2rem;
+            }
+
+            .theme-toggle {
+                top: 10px;
+                left: 10px;
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+
+            .contact-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="theme-toggle" onclick="toggleTheme()">
+        <span id="theme-icon">🌙</span>
+        <span id="theme-text">ليلي</span>
+    </div>
+
     <div class="container">
-        <h1>مرحباً بك! 👋</h1>
-        <p>
-            هذه صفحتي الشخصية على GitHub Pages. يمكنك تخصيص هذا المحتوى كما تشاء وإضافة معلوماتك الشخصية ومشاريعك.
-        </p>
-        
-        <div class="buttons">
-            <a href="#projects" class="btn">مشاريعي</a>
-            <a href="#about" class="btn">نبذة عني</a>
-            <a href="#contact" class="btn">تواصل معي</a>
+        <div class="header">
+            <h1>أدوار مشروع وهج الجوهرة</h1>
+            <p>فرصة استثمارية مميزة في موقع حيوي</p>
         </div>
 
-        <div class="social-links">
-            <a href="https://github.com" class="social-link" title="GitHub">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                </svg>
-            </a>
-            <a href="https://twitter.com" class="social-link" title="Twitter">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
-                </svg>
-            </a>
-            <a href="https://linkedin.com" class="social-link" title="LinkedIn">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                </svg>
-            </a>
+        <div class="main-card">
+            <div class="hero-image">
+                <div class="contact-icons">
+                    <div class="contact-icon" onclick="scrollToContact()" title="تواصل معنا">
+                        📞
+                    </div>
+                    <a href="https://wa.me/966551141142" class="contact-icon whatsapp-icon" title="واتساب" target="_blank">
+                        💬
+                    </a>
+                </div>
+                <span style="position: relative; z-index: 2; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">🏢 مشروع وهج الجوهرة</span>
+            </div>
+
+            <div class="content">
+                <div class="description">
+                    <h2>وصف العقار</h2>
+                    <p>أدوار سكنية حديثة في مشروع وهج الجوهرة بتصميم عصري ومواصفات عالية الجودة. موقع متميز قريب من الخدمات الأساسية والطرق الرئيسية، مناسب للسكن أو الاستثمار.</p>
+                </div>
+
+                <div class="floors">
+                    <div class="floor-card">
+                        <div class="feature-badge">الدور الأول</div>
+                        <h3>🏠 الدور الأرضي</h3>
+                        <ul>
+                            <li>3 غرف نوم رئيسية</li>
+                            <li>صالة واسعة ومجلس</li>
+                            <li>مطبخ مجهز</li>
+                            <li>3 دورات مياه</li>
+                            <li>حديقة خاصة</li>
+                            <li>مدخل سيارة</li>
+                        </ul>
+                    </div>
+
+                    <div class="floor-card">
+                        <div class="feature-badge">الدور الثاني</div>
+                        <h3>🏢 الدور العلوي</h3>
+                        <ul>
+                            <li>4 غرف نوم واسعة</li>
+                            <li>صالة عائلية</li>
+                            <li>مطبخ تحضيري</li>
+                            <li>4 دورات مياه</li>
+                            <li>شرفات مطلة</li>
+                            <li>غرفة خادمة</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="video-section">
+                    <h3>🎥 جولات افتراضية</h3>
+                    <div class="videos-container">
+                        <div class="video-item">
+                            <h4>🏠 الدور الأول</h4>
+                            <div class="video-placeholder">
+                                <iframe src="https://www.youtube.com/embed/Q7ctL-jdeJo" 
+                                        title="جولة في الدور الأول" 
+                                        allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
+                        <div class="video-item">
+                            <h4>🏢 الدور الثاني</h4>
+                            <div class="video-placeholder">
+                                <iframe src="https://www.youtube.com/embed/Ai5-ESxiJ9Q" 
+                                        title="جولة في الدور الثاني" 
+                                        allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <p style="color: var(--text-secondary);">شاهد جولة شاملة داخل كل دور وتفاصيل التشطيبات</p>
+                </div>
+            </div>
         </div>
 
-        <div class="footer">
-            <p>© 2025 - صُنع بـ ❤️ باستخدام GitHub Pages</p>
+        <div class="contact" id="contact-section">
+            <h3>📱 للتواصل والاستفسار</h3>
+            <div class="phone">055 141 142</div>
+            <p>متاح للرد على استفساراتكم في أي وقت</p>
+            <div style="margin: 20px 0; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="tel:+966551141142" class="contact-btn">اتصل الآن</a>
+                <a href="https://wa.me/966551141142" class="contact-btn" style="background: #25D366; color: white; border-color: #25D366;">واتساب</a>
+                <a href="https://drive.google.com/drive/folders/1sfuai07GFnBLBq_VSawpyCOP7lKvrzRn" target="_blank" class="contact-btn">📁 ملفات المشروع</a>
+            </div>
         </div>
     </div>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+            
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                themeIcon.textContent = '🌙';
+                themeText.textContent = 'ليلي';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                themeIcon.textContent = '☀️';
+                themeText.textContent = 'نهاري';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        function scrollToContact() {
+            document.getElementById('contact-section').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // تحميل الثيم المحفوظ
+        window.addEventListener('load', function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-icon').textContent = '☀️';
+                document.getElementById('theme-text').textContent = 'نهاري';
+            }
+        });
+    </script>
 </body>
 </html>
