@@ -553,26 +553,21 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   <meta charset="UTF-8">
   <title>عنوان الصفحة</title>
 
-  <!-- Snapchat Pixel Code -->
-  <script type='text/javascript'>
-    (function(e,t,n){
-      if(e.snaptr) return;
-      var a = e.snaptr = function(){
-        a.handleRequest ? a.handleRequest.apply(a, arguments) : a.queue.push(arguments)
-      };
-      a.queue = [];
-      var s = 'script';
-      var r = t.createElement(s);
-      r.async = true;
-      r.src = 'https://sc-static.net/scevent.min.js';
-      var u = t.getElementsByTagName(s)[0];
-      u.parentNode.insertBefore(r, u);
-    })(window, document, 'https://sc-static.net/scevent.min.js');
+<!-- Snap Pixel Code -->
+<script type='text/javascript'>
+(function(e,t,n){if(e.snaptr)return;var a=e.snaptr=function()
+{a.handleRequest?a.handleRequest.apply(a,arguments):a.queue.push(arguments)};
+a.queue=[];var s='script';r=t.createElement(s);r.async=!0;
+r.src=n;var u=t.getElementsByTagName(s)[0];
+u.parentNode.insertBefore(r,u);})(window,document,
+'https://sc-static.net/scevent.min.js');
 
-    snaptr('init', '44050afc-0898-450f-b8c7-135d48a95e6b'); 
-    snaptr('track', 'PAGE_VIEW');
-  </script>
-  <!-- End Snapchat Pixel Code -->
+snaptr('init', 'b2edd745-4ae9-44de-ac67-ca1c1a0be4e2', {});
+
+snaptr('track', 'PAGE_VIEW');
+
+</script>
+<!-- End Snap Pixel Code -->
 </head>
 
 </body>
